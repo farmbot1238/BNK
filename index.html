@@ -183,6 +183,34 @@
             word-break: break-all;
         }
 
+        .unavailable-message {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid rgba(244, 67, 54, 0.4);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        .unavailable-message h4 {
+            color: #FF9800;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .unavailable-message h4 i {
+            color: #f44336;
+        }
+
+        .unavailable-message p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+            min-height: auto;
+        }
+
         footer {
             text-align: center;
             padding: 30px 0;
@@ -334,13 +362,20 @@
                     </div>
                     <h3>اللغة الإنجليزية</h3>
                     <p>بنك أسئلة لمادة الإنجليزية يشمل القواعد، القراءة، الكتابة والمفردات اللغوية</p>
+                    
+                    <!-- رسالة تعذر التحميل -->
+                    <div class="unavailable-message">
+                        <h4><i class="fas fa-exclamation-triangle"></i> تعذر تنزيل بنك اللغة الإنجليزية</h4>
+                        <p>سبب عدم توفر بنك الأسئلة: عدم إكمال المادة أو صدور قرار رسمي بشأن حذف الوحدة الخامسة</p>
+                    </div>
+                    
                     <div class="file-path">مسار الملف: pdfs/E.pdf</div>
-                    <a href="#" class="download-btn" id="english-download">
-                        تنزيل البنك <i class="fas fa-download"></i>
+                    <a href="#" class="download-btn" id="english-download" style="background: linear-gradient(to right, #f44336, #d32f2f); cursor: not-allowed;">
+                        غير متوفر حالياً <i class="fas fa-ban"></i>
                     </a>
                     <div class="download-info">
-                        <i class="fas fa-file-pdf"></i>
-                        <span>الملف: E.pdf</span>
+                        <i class="fas fa-exclamation-triangle" style="color:#f44336"></i>
+                        <span>الملف غير متوفر مؤقتاً</span>
                     </div>
                 </div>
             </div>
@@ -399,7 +434,16 @@
                 const button = document.getElementById(`${subject}-download`);
                 const fileName = fileNames[subject];
                 
-                // التحقق من وجود الملف
+                // اللغة الإنجليزية غير متوفرة
+                if (subject === 'english') {
+                    button.onclick = function(e) {
+                        e.preventDefault();
+                        alert(`تعذر تنزيل بنك اللغة الإنجليزية\n\nسبب عدم توفر بنك الأسئلة:\nعدم إكمال المادة أو صدور قرار رسمي بشأن حذف الوحدة الخامسة`);
+                    };
+                    continue;
+                }
+                
+                // التحقق من وجود الملف للباقي
                 const fileExists = await checkFileExists(fileUrl);
                 
                 if (fileExists) {
