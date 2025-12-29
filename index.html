@@ -311,7 +311,7 @@
                     </div>
                     <h3>اللغة العربية</h3>
                     <p>بنك أسئلة شامل لمادة اللغة العربية يشمل النصوص الأدبية، القواعد النحوية، البلاغة والتعبير</p>
-                    <div class="file-path">مسار الملف: pdfs/A.pdf</div>
+                    <div class="file-path">مسار الملف: A.pdf</div>
                     <a href="#" class="download-btn" id="arabic-download">
                         تنزيل البنك <i class="fas fa-download"></i>
                     </a>
@@ -328,7 +328,7 @@
                     </div>
                     <h3>التربية الإسلامية</h3>
                     <p>بنك أسئلة لمادة التربية الإسلامية يشمل القرآن الكريم، الحديث الشريف، الفقه والعقيدة</p>
-                    <div class="file-path">مسار الملف: pdfs/D.pdf</div>
+                    <div class="file-path">مسار الملف: D.pdf</div>
                     <a href="#" class="download-btn" id="religion-download">
                         تنزيل البنك <i class="fas fa-download"></i>
                     </a>
@@ -345,7 +345,7 @@
                     </div>
                     <h3>التاريخ</h3>
                     <p>بنك أسئلة لمادة التاريخ يشمل التاريخ الإسلامي، التاريخ العربي الحديث، والعالم المعاصر</p>
-                    <div class="file-path">مسار الملف: pdfs/T.pdf</div>
+                    <div class="file-path">مسار الملف: T.pdf</div>
                     <a href="#" class="download-btn" id="history-download">
                         تنزيل البنك <i class="fas fa-download"></i>
                     </a>
@@ -369,7 +369,7 @@
                         <p>سبب عدم توفر بنك الأسئلة: عدم إكمال المادة أو صدور قرار رسمي بشأن حذف الوحدة الخامسة</p>
                     </div>
                     
-                    <div class="file-path">مسار الملف: pdfs/E.pdf</div>
+                    <div class="file-path">مسار الملف: E.pdf</div>
                     <a href="#" class="download-btn" id="english-download" style="background: linear-gradient(to right, #f44336, #d32f2f); cursor: not-allowed;">
                         غير متوفر حالياً <i class="fas fa-ban"></i>
                     </a>
@@ -388,12 +388,12 @@
     </div>
 
     <script>
-        // روابط الملفات في مجلد pdfs
+        // روابط الملفات في نفس المجلد
         const pdfFiles = {
-            arabic: "pdfs/A.pdf",
-            religion: "pdfs/D.pdf",
-            history: "pdfs/T.pdf",
-            english: "pdfs/E.pdf"
+            arabic: "A.pdf",
+            religion: "D.pdf",
+            history: "T.pdf",
+            english: "E.pdf"
         };
 
         // عناوين الملفات للعرض
@@ -471,13 +471,13 @@
                     button.innerHTML = `الملف غير متوفر <i class="fas fa-exclamation-triangle"></i>`;
                     button.onclick = function(e) {
                         e.preventDefault();
-                        alert(`الملف غير متوفر!\n\nيرجى التأكد من وجود الملف في المسار:\n${fileUrl}`);
+                        alert(`الملف غير متوفر!\n\nيرجى التأكد من وجود الملف في نفس مجلد الموقع:\n${fileUrl}`);
                     };
                     
                     // تحديث معلومات الملف
                     const downloadInfo = button.nextElementSibling;
                     if (downloadInfo && downloadInfo.classList.contains('download-info')) {
-                        downloadInfo.innerHTML = `<i class="fas fa-exclamation-triangle" style="color:#f44336"></i> <span>الملف غير موجود في المجلد</span>`;
+                        downloadInfo.innerHTML = `<i class="fas fa-exclamation-triangle" style="color:#f44336"></i> <span>الملف غير موجود</span>`;
                     }
                 }
             }
